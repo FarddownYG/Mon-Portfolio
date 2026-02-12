@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { MatrixBackground } from './MatrixBackground';
-import profileImage from 'figma:asset/472c115042f95aba19d66f049c22c81ee52f7e47.png';
 
 export function Hero() {
   const scrollToSection = (href: string) => {
@@ -105,7 +104,7 @@ export function Hero() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl blur-3xl opacity-30"></div>
               <ImageWithFallback
-                src={profileImage}
+                src="/profile.jpg"
                 alt="Yanis Gely - Élève Ingénieur ESAIP"
                 className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square"
               />
