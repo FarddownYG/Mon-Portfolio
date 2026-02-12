@@ -1,30 +1,32 @@
 import { motion } from 'motion/react';
 import { useInView } from './useInView';
 import { Shield, Code, Palette, GraduationCap } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function About() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   const highlights = [
     {
       icon: GraduationCap,
-      title: "Élève Ingénieur & Auto-Entrepreneur",
-      description: "En 2ème année à l'ESAIP après un Bac Technologique, je développe en parallèle mon activité d'auto-entrepreneur",
+      title: t('about.highlight1Title'),
+      description: t('about.highlight1Desc'),
     },
     {
       icon: Shield,
-      title: 'Apprentissage Cybersécurité',
-      description: "En cours de spécialisation en cybersécurité, j'apprends les fondamentaux de la sécurité informatique",
+      title: t('about.highlight2Title'),
+      description: t('about.highlight2Desc'),
     },
     {
       icon: Code,
-      title: 'Développeur Full Stack',
-      description: 'Création de sites web et applications avec React, TypeScript, Python et les technologies modernes',
+      title: t('about.highlight3Title'),
+      description: t('about.highlight3Desc'),
     },
     {
       icon: Palette,
-      title: 'UX/UI Designer',
-      description: "Conception d'interfaces utilisateur élégantes avec Figma pour une expérience optimale",
+      title: t('about.highlight4Title'),
+      description: t('about.highlight4Desc'),
     },
   ];
 
@@ -42,11 +44,10 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            À propos de <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">moi</span>
+            {t('about.title')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('about.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Passionné par la technologie, je combine expertise technique en cybersécurité, 
-            développement web moderne et design UX/UI pour créer des solutions innovantes et sécurisées.
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -78,27 +79,12 @@ export function About() {
           className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white"
         >
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">Mon Parcours</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6">{t('about.journeyTitle')}</h3>
             <div className="space-y-4 text-lg leading-relaxed">
-              <p>
-                Actuellement en <strong>2ème année d'ingénieur à l'ESAIP</strong> et <strong>auto-entrepreneur</strong>, 
-                j'ai commencé mon parcours avec un <strong>Bac Technologique</strong> qui m'a donné les bases solides 
-                pour poursuivre dans le numérique et développer mon activité professionnelle.
-              </p>
-              <p>
-                Passionné par le <strong>développement web</strong>, je maîtrise Python et TypeScript (.tsx) pour créer 
-                des applications web modernes et performantes. Je suis actuellement en apprentissage de la 
-                <strong> cybersécurité</strong> pour comprendre et sécuriser les systèmes informatiques.
-              </p>
-              <p>
-                En tant que <strong>développeur full stack</strong> et <strong>designer UX/UI</strong>, je conçois avec Figma 
-                puis développe des interfaces élégantes et intuitives. Mon objectif est de créer des solutions web 
-                qui combinent beauté visuelle et robustesse technique.
-              </p>
-              <p>
-                Je propose des <strong>solutions web complètes</strong> : création de sites web, d'applications web, 
-                design d'interfaces, et automatisation avec n8n auto-hébergé pour optimiser vos processus métier.
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t('about.journeyP1') }} />
+              <p dangerouslySetInnerHTML={{ __html: t('about.journeyP2') }} />
+              <p dangerouslySetInnerHTML={{ __html: t('about.journeyP3') }} />
+              <p dangerouslySetInnerHTML={{ __html: t('about.journeyP4') }} />
             </div>
           </div>
         </motion.div>

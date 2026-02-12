@@ -1,11 +1,13 @@
 import { motion } from 'motion/react';
 import { useInView } from './useInView';
-import { Mail, Linkedin, Github, Send, MapPin, Phone } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, MapPin } from 'lucide-react';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function Contact() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,12 +67,6 @@ export function Contact() {
       link: 'mailto:yanisgely@icloud.com',
     },
     {
-      icon: Phone,
-      label: 'Téléphone',
-      value: '06 52 32 41 16',
-      link: 'tel:+33652324116',
-    },
-    {
       icon: MapPin,
       label: 'Localisation',
       value: 'Aix-en-Provence, France',
@@ -113,10 +109,10 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Travaillons <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">ensemble</span>
+            {t('contact.title')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('contact.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Un projet en tête ? N'hésitez pas à me contacter pour en discuter !
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -128,11 +124,11 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Envoyez-moi un message</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('contact.send')}</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Nom complet
+                    {t('contact.name')}
                   </label>
                   <input
                     type="text"
@@ -142,13 +138,13 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all outline-none"
-                    placeholder="Votre nom"
+                    placeholder={t('contact.name')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
+                    {t('contact.email')}
                   </label>
                   <input
                     type="email"
@@ -158,13 +154,13 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all outline-none"
-                    placeholder="votre@email.com"
+                    placeholder={t('contact.email')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
+                    {t('contact.message')}
                   </label>
                   <textarea
                     id="message"
@@ -174,7 +170,7 @@ export function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all outline-none resize-none"
-                    placeholder="Décrivez votre projet..."
+                    placeholder={t('contact.message')}
                   />
                 </div>
 
@@ -192,16 +188,16 @@ export function Contact() {
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Envoi en cours...
+                      {t('contact.sending')}
                     </>
                   ) : submitted ? (
                     <>
-                      ✓ Message envoyé !
+                      ✓ {t('contact.success')}
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      Envoyer le message
+                      {t('contact.send')}
                     </>
                   )}
                 </motion.button>
@@ -218,7 +214,7 @@ export function Contact() {
           >
             {/* Contact Details */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Informations de contact</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('contact.directContact')}</h3>
               <div className="space-y-6">
                 {contactInfo.map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
@@ -249,7 +245,7 @@ export function Contact() {
 
             {/* Social Links */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Suivez-moi</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('contact.social')}</h3>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social) => (
                   <motion.a

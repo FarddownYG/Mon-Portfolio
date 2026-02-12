@@ -2,8 +2,10 @@ import { motion } from 'motion/react';
 import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { MatrixBackground } from './MatrixBackground';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function Hero() {
+  const { t } = useLanguage();
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -35,7 +37,7 @@ export function Hero() {
               transition={{ delay: 0.3 }}
               className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6"
             >
-              Bonjour, je suis{' '}
+              {t('hero.greeting')}{' '}
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Yanis Gely
               </span>
@@ -47,7 +49,7 @@ export function Hero() {
               transition={{ delay: 0.4 }}
               className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-4"
             >
-              Élève Ingénieur à l'ESAIP • Auto-Entrepreneur
+              {t('hero.subtitle')}
             </motion.p>
 
             <motion.p
@@ -56,7 +58,7 @@ export function Hero() {
               transition={{ delay: 0.5 }}
               className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              <span className="text-purple-600 dark:text-purple-400 font-semibold">Développeur Web</span> • <span className="text-pink-600 dark:text-pink-400 font-semibold">UX/UI Designer</span> • <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Python & TypeScript</span>
+              <span className="text-purple-600 dark:text-purple-400 font-semibold">{t('hero.role1')}</span> • <span className="text-pink-600 dark:text-pink-400 font-semibold">{t('hero.role2')}</span> • <span className="text-indigo-600 dark:text-indigo-400 font-semibold">{t('hero.role3')}</span>
             </motion.p>
 
             <motion.div
@@ -71,7 +73,7 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-shadow"
               >
-                Voir mes projets
+                {t('hero.cta1')}
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection('#contact')}
@@ -79,7 +81,7 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-700 rounded-xl font-semibold hover:border-indigo-600 dark:hover:border-indigo-400 transition-colors"
               >
-                Contactez-moi
+                {t('hero.cta2')}
               </motion.button>
             </motion.div>
           </motion.div>

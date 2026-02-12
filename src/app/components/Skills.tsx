@@ -11,10 +11,13 @@ import {
   Lock,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getSkillsData } from '../utils/translationHelpers';
 
 export function Skills() {
   const [ref, isInView] = useInView({ threshold: 0.2 });
   const [animated, setAnimated] = useState(false);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     if (isInView && !animated) {
@@ -22,56 +25,17 @@ export function Skills() {
     }
   }, [isInView, animated]);
 
-  const skills = [
-    {
-      category: 'Développement Frontend',
-      icon: Code2,
-      color: 'from-blue-500 to-cyan-500',
-      comment: 'Responsable de la charte graphique chez CLASSOR, j\'ai développé de nombreux sites web et applications performantes avec des interfaces modernes et intuitives.',
-      items: [
-        { name: 'React / TypeScript (.tsx)', level: 60 },
-        { name: 'Tailwind CSS', level: 55 },
-        { name: 'JavaScript / HTML / CSS', level: 58 },
-        { name: 'Motion / Animations', level: 50 },
-      ],
-    },
-    {
-      category: 'Développement Backend',
-      icon: Database,
-      color: 'from-green-500 to-teal-500',
-      comment: 'Bien que je me concentre principalement sur le frontend et le design, j\'ai acquis de solides bases en développement backend pour créer des solutions complètes.',
-      items: [
-        { name: 'Python', level: 20 },
-        { name: 'Node.js / Express', level: 18 },
-        { name: 'PostgreSQL / Bases de données', level: 20 },
-        { name: 'API REST', level: 22 },
-      ],
-    },
-    {
-      category: 'UX/UI Design',
-      icon: Palette,
-      color: 'from-pink-500 to-rose-500',
-      comment: 'Ma plus grande force : créativité débordante et capacité à transformer des idées innovantes en designs d\'exception. Chaque projet est une opportunité de repousser les limites du design.',
-      items: [
-        { name: 'Figma', level: 70 },
-        { name: 'Design System', level: 65 },
-        { name: 'Prototypage', level: 68 },
-        { name: 'Responsive Design', level: 62 },
-      ],
-    },
-    {
-      category: 'Cybersécurité (Formation autodidacte)',
-      icon: Shield,
-      color: 'from-red-500 to-orange-500',
-      comment: 'En pleine formation à l\'ESAIP avec un apprentissage autodidacte intensif. Passionné par la sécurité, je développe activement mes compétences en hacking éthique et sécurité web.',
-      items: [
-        { name: 'Sécurité Web (bases)', level: 10 },
-        { name: 'TryHackMe / Apprentissage', level: 12 },
-        { name: 'Hacking éthique (OSINT, scan)', level: 10 },
-        { name: 'Bonnes pratiques sécurité', level: 8 },
-      ],
-    },
-  ];
+  const iconMap: { [key: string]: any } = {
+    Code2,
+    Database,
+    Palette,
+    Shield,
+  };
+
+  const skills = getSkillsData(t, language).map(skill => ({
+    ...skill,
+    icon: iconMap[skill.icon],
+  }));
 
   const tools = [
     { name: 'Git / GitHub', icon: GitBranch, color: 'text-orange-500' },
@@ -94,10 +58,10 @@ export function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Compétences & <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Technologies</span>
+            {t('skills.title')} <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{t('skills.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Une expertise technique complète pour transformer vos idées en solutions performantes
+            {t('skills.subtitle')}
           </p>
         </motion.div>
 
@@ -156,7 +120,7 @@ export function Skills() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <h3 className="text-3xl font-bold text-center mb-8">
-            Outils & Plateformes
+            {t('skills.tools')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {tools.map((tool, index) => (
@@ -184,13 +148,11 @@ export function Skills() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 p-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl text-white text-center"
         >
-          <h3 className="text-3xl font-bold mb-4">Formation Continue</h3>
+          <h3 className="text-3xl font-bold mb-4">{language === 'en' ? 'Continuous Learning' : 'Formation Continue'}</h3>
           <p className="text-lg max-w-3xl mx-auto">
-            En tant qu'élève ingénieur à l'ESAIP, je reste constamment à jour avec les dernières 
-            technologies et pratiques de sécurité. Je me forme également en autodidacte sur 
-            <strong> TryHackMe</strong> pour approfondir mes connaissances en cybersécurité et hacking éthique. 
-            Passionné par l'apprentissage continu, je développe mes compétences pour offrir les meilleures 
-            solutions à mes clients.
+            {language === 'en' 
+              ? "As an engineering student at ESAIP, I stay constantly updated with the latest technologies and security practices. I also self-train on TryHackMe to deepen my knowledge in cybersecurity and ethical hacking. Passionate about continuous learning, I develop my skills to offer the best solutions to my clients."
+              : "En tant qu'élève ingénieur à l'ESAIP, je reste constamment à jour avec les dernières technologies et pratiques de sécurité. Je me forme également en autodidacte sur TryHackMe pour approfondir mes connaissances en cybersécurité et hacking éthique. Passionné par l'apprentissage continu, je développe mes compétences pour offrir les meilleures solutions à mes clients."}
           </p>
         </motion.div>
       </div>

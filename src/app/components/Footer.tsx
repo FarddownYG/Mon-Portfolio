@@ -1,19 +1,21 @@
 import { motion } from 'motion/react';
 import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t, language } = useLanguage();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const quickLinks = [
-    { name: 'Accueil', href: '#hero' },
-    { name: 'À propos', href: '#about' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Compétences', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.home'), href: '#hero' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
 
   const legalLinks = [
@@ -47,7 +49,9 @@ export function Footer() {
               Yanis Gely
             </motion.h3>
             <p className="text-gray-400 leading-relaxed">
-              Élève ingénieur passionné par la cybersécurité, le développement web et le design UX/UI.
+              {language === 'en' 
+                ? 'Engineering student passionate about cybersecurity, web development and UX/UI design.'
+                : 'Élève ingénieur passionné par la cybersécurité, le développement web et le design UX/UI.'}
             </p>
             <div className="mt-6 flex gap-4">
               {socialLinks.map((social) => (
@@ -69,7 +73,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-4">Navigation</h4>
+            <h4 className="text-lg font-bold mb-4">{language === 'en' ? 'Navigation' : 'Navigation'}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -91,13 +95,13 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-4">Expertises</h4>
+            <h4 className="text-lg font-bold mb-4">{language === 'en' ? 'Expertise' : 'Expertises'}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Développement Web</li>
-              <li>Applications React/TypeScript</li>
-              <li>Design UX/UI avec Figma</li>
-              <li>Python Backend</li>
-              <li>Solutions Web Complètes</li>
+              <li>{language === 'en' ? 'Web Development' : 'Développement Web'}</li>
+              <li>{language === 'en' ? 'React/TypeScript Apps' : 'Applications React/TypeScript'}</li>
+              <li>{language === 'en' ? 'UX/UI Design with Figma' : 'Design UX/UI avec Figma'}</li>
+              <li>{language === 'en' ? 'Python Backend' : 'Python Backend'}</li>
+              <li>{language === 'en' ? 'Complete Web Solutions' : 'Solutions Web Complètes'}</li>
             </ul>
           </div>
 
@@ -114,18 +118,10 @@ export function Footer() {
                 </a>
               </li>
               <li>Aix-en-Provence, France</li>
-              <li>
-                <a
-                  href="tel:+33652324116"
-                  className="hover:text-white transition-colors"
-                >
-                  06 52 32 41 16
-                </a>
-              </li>
             </ul>
             <div className="mt-6 p-4 bg-gray-800 rounded-lg">
               <p className="text-sm text-gray-400">
-                <span className="text-green-400 font-semibold">●</span> Disponible pour de nouveaux projets
+                <span className="text-green-400 font-semibold">●</span> {language === 'en' ? 'Available for new projects' : 'Disponible pour de nouveaux projets'}
               </p>
             </div>
           </div>
@@ -138,7 +134,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-center md:text-left">
             <p className="text-gray-400 text-sm">
-              © {currentYear} Yanis Gely. Tous droits réservés.
+              © {currentYear} Yanis Gely. {t('footer.rights')}
             </p>
           </div>
 

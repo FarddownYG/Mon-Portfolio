@@ -1,0 +1,191 @@
+// Helper pour obtenir les données de projets traduites
+export function getProjectsData(t: (key: string) => any) {
+  return [
+    {
+      title: 'My Garage',
+      description: t('projects.myGarage.description'),
+      fullDescription: t('projects.myGarage.fullDescription'),
+      image: 'https://images.unsplash.com/photo-1633250391894-397930e3f5f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc4ODI2MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      context: t('projects.myGarage.context'),
+      objectives: t('projects.myGarage.objectives'),
+      challenges: t('projects.myGarage.challenges'),
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Figma', 'Vercel', 'LocalStorage'],
+      results: t('projects.myGarage.results'),
+      github: 'https://github.com/FarddownYG',
+      demo: 'https://my-garage-uk9i.vercel.app/',
+      demoLabel: t('projects.seeApp'),
+      gradient: 'from-blue-500 to-cyan-500',
+      date: '2024',
+    },
+    {
+      title: 'S.E.A.L - SSL Checker',
+      description: t('projects.seal.description'),
+      fullDescription: t('projects.seal.fullDescription'),
+      image: 'https://images.unsplash.com/photo-1631632286519-cb83e10e3d98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzc2wlMjBzZWN1cml0eSUyMGxvY2slMjBjZXJ0aWZpY2F0ZXxlbnwxfHx8fDE3Njc5Njc3Njd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      context: t('projects.seal.context'),
+      objectives: t('projects.seal.objectives'),
+      challenges: t('projects.seal.challenges'),
+      technologies: ['Python', 'React', 'TypeScript', 'PostgreSQL', 'SSL/TLS', 'Monitoring'],
+      results: t('projects.seal.results'),
+      github: 'https://github.com/FarddownYG',
+      demo: 'https://www.linkedin.com/in/seal-secure-expiry-alert-logging/',
+      demoLabel: t('projects.seeLinkedIn'),
+      gradient: 'from-green-500 to-emerald-500',
+      date: '2024 - En cours',
+    },
+    {
+      title: t('projects.python.title'),
+      description: t('projects.python.description'),
+      fullDescription: t('projects.python.fullDescription'),
+      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      context: t('projects.python.context'),
+      objectives: t('projects.python.objectives'),
+      challenges: t('projects.python.challenges'),
+      technologies: ['Python', 'TensorFlow/PyTorch', 'Pygame', 'Scapy', 'BeautifulSoup', 'Requests', 'NumPy', 'Pandas'],
+      results: t('projects.python.results'),
+      github: 'https://github.com/FarddownYG',
+      demo: '#',
+      gradient: 'from-yellow-500 to-orange-500',
+      date: '2020 - 2024',
+    },
+    {
+      title: t('projects.absences.title'),
+      description: t('projects.absences.description'),
+      fullDescription: t('projects.absences.fullDescription'),
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      context: t('projects.absences.context'),
+      objectives: t('projects.absences.objectives'),
+      challenges: t('projects.absences.challenges'),
+      technologies: ['React', 'TypeScript', 'Python', 'PostgreSQL', 'FastAPI', 'JWT Auth'],
+      results: t('projects.absences.results'),
+      github: 'https://github.com/FarddownYG',
+      demo: 'https://round-mild-74549028.figma.site',
+      demoLabel: t('projects.seeApp'),
+      gradient: 'from-purple-500 to-pink-500',
+      date: '2024',
+    },
+    {
+      title: t('projects.classor.title'),
+      description: t('projects.classor.description'),
+      fullDescription: t('projects.classor.fullDescription'),
+      image: 'https://images.unsplash.com/photo-1677469684112-5dfb3aa4d3df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWJzaXRlJTIwZGVzaWdufGVufDF8fHx8MTc2NzkyNTQxNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      context: t('projects.classor.context'),
+      objectives: t('projects.classor.objectives'),
+      challenges: t('projects.classor.challenges'),
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Figma', 'Next.js', 'Vite', 'SEO'],
+      results: t('projects.classor.results'),
+      github: 'https://github.com/FarddownYG',
+      demo: 'https://rating-typo-75226292.figma.site',
+      demoLabel: t('projects.seeSite'),
+      gradient: 'from-indigo-500 to-purple-500',
+      date: '2024',
+    },
+  ];
+}
+
+// Helper pour obtenir les données de compétences traduites
+export function getSkillsData(t: (key: string) => any, language: string) {
+  if (language === 'en') {
+    return [
+      {
+        category: 'Frontend Development',
+        icon: 'Code2',
+        color: 'from-blue-500 to-cyan-500',
+        comment: 'Responsible for the graphic charter at CLASSOR, I have developed many high-performance websites and applications with modern and intuitive interfaces.',
+        items: [
+          { name: 'React / TypeScript (.tsx)', level: 60 },
+          { name: 'Tailwind CSS', level: 55 },
+          { name: 'JavaScript / HTML / CSS', level: 58 },
+          { name: 'Motion / Animations', level: 50 },
+        ],
+      },
+      {
+        category: 'Backend Development',
+        icon: 'Database',
+        color: 'from-green-500 to-teal-500',
+        comment: 'Although I mainly focus on frontend and design, I have acquired solid foundations in backend development to create complete solutions.',
+        items: [
+          { name: 'Python', level: 20 },
+          { name: 'Node.js / Express', level: 18 },
+          { name: 'PostgreSQL / Databases', level: 20 },
+          { name: 'REST API', level: 22 },
+        ],
+      },
+      {
+        category: 'UX/UI Design',
+        icon: 'Palette',
+        color: 'from-pink-500 to-rose-500',
+        comment: 'My greatest strength: overflowing creativity and the ability to transform innovative ideas into exceptional designs. Each project is an opportunity to push the boundaries of design.',
+        items: [
+          { name: 'Figma', level: 70 },
+          { name: 'Design System', level: 65 },
+          { name: 'Prototyping', level: 68 },
+          { name: 'Responsive Design', level: 62 },
+        ],
+      },
+      {
+        category: 'Cybersecurity (Self-taught)',
+        icon: 'Shield',
+        color: 'from-red-500 to-orange-500',
+        comment: 'Currently training at ESAIP with intensive self-taught learning. Passionate about security, I actively develop my skills in ethical hacking and web security.',
+        items: [
+          { name: 'Web Security (basics)', level: 10 },
+          { name: 'TryHackMe / Learning', level: 12 },
+          { name: 'Ethical Hacking (OSINT, scan)', level: 10 },
+          { name: 'Security Best Practices', level: 8 },
+        ],
+      },
+    ];
+  }
+  
+  return [
+    {
+      category: 'Développement Frontend',
+      icon: 'Code2',
+      color: 'from-blue-500 to-cyan-500',
+      comment: 'Responsable de la charte graphique chez CLASSOR, j\'ai développé de nombreux sites web et applications performantes avec des interfaces modernes et intuitives.',
+      items: [
+        { name: 'React / TypeScript (.tsx)', level: 60 },
+        { name: 'Tailwind CSS', level: 55 },
+        { name: 'JavaScript / HTML / CSS', level: 58 },
+        { name: 'Motion / Animations', level: 50 },
+      ],
+    },
+    {
+      category: 'Développement Backend',
+      icon: 'Database',
+      color: 'from-green-500 to-teal-500',
+      comment: 'Bien que je me concentre principalement sur le frontend et le design, j\'ai acquis de solides bases en développement backend pour créer des solutions complètes.',
+      items: [
+        { name: 'Python', level: 20 },
+        { name: 'Node.js / Express', level: 18 },
+        { name: 'PostgreSQL / Bases de données', level: 20 },
+        { name: 'API REST', level: 22 },
+      ],
+    },
+    {
+      category: 'UX/UI Design',
+      icon: 'Palette',
+      color: 'from-pink-500 to-rose-500',
+      comment: 'Ma plus grande force : créativité débordante et capacité à transformer des idées innovantes en designs d\'exception. Chaque projet est une opportunité de repousser les limites du design.',
+      items: [
+        { name: 'Figma', level: 70 },
+        { name: 'Design System', level: 65 },
+        { name: 'Prototypage', level: 68 },
+        { name: 'Responsive Design', level: 62 },
+      ],
+    },
+    {
+      category: 'Cybersécurité (Formation autodidacte)',
+      icon: 'Shield',
+      color: 'from-red-500 to-orange-500',
+      comment: 'En pleine formation à l\'ESAIP avec un apprentissage autodidacte intensif. Passionné par la sécurité, je développe activement mes compétences en hacking éthique et sécurité web.',
+      items: [
+        { name: 'Sécurité Web (bases)', level: 10 },
+        { name: 'TryHackMe / Apprentissage', level: 12 },
+        { name: 'Hacking éthique (OSINT, scan)', level: 10 },
+        { name: 'Bonnes pratiques sécurité', level: 8 },
+      ],
+    },
+  ];
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, FileText } from 'lucide-react';
+import { Moon, Sun, Menu, X, FileText, Languages } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -10,6 +11,7 @@ interface NavbarProps {
 export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,11 +22,11 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Accueil', href: '#hero' },
-    { name: 'À propos', href: '#about' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Compétences', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('nav.home'), href: '#hero' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -89,8 +91,17 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
                 whileTap={{ scale: 0.95 }}
               >
                 <FileText className="w-4 h-4" />
-                CV
+                {t('nav.cv')}
               </motion.a>
+              <motion.button
+                onClick={toggleLanguage}
+                className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title={language === 'en' ? 'Switch to French' : 'Passer en anglais'}
+              >
+                <Languages className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+              </motion.button>
               <motion.button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
@@ -108,6 +119,15 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
 
             {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center space-x-2">
+              <motion.button
+                onClick={toggleLanguage}
+                className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title={language === 'en' ? 'Switch to French' : 'Passer en anglais'}
+              >
+                <Languages className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+              </motion.button>
               <motion.button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"
@@ -174,7 +194,7 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
                   className="flex items-center gap-2 py-2 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold shadow-lg"
                 >
                   <FileText className="w-4 h-4" />
-                  CV
+                  {t('nav.cv')}
                 </motion.a>
               </div>
             </motion.div>

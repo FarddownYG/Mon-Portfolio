@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ExternalLink, Github, Calendar, Target, Lightbulb, Wrench, TrendingUp } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ProjectDetails {
   title: string;
@@ -24,6 +25,7 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+  const { t } = useLanguage();
   if (!project) return null;
 
   return (
@@ -96,7 +98,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       <div className="flex items-start gap-3 mb-3">
                         <Lightbulb className="w-6 h-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-1" />
                         <div>
-                          <h3 className="text-xl font-bold mb-2">Contexte & Motivation</h3>
+                          <h3 className="text-xl font-bold mb-2">{t('modal.context')}</h3>
                           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                             {project.context}
                           </p>
@@ -108,7 +110,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     <div>
                       <div className="flex items-center gap-3 mb-4">
                         <Target className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                        <h3 className="text-xl font-bold">Objectifs</h3>
+                        <h3 className="text-xl font-bold">{t('modal.objectives')}</h3>
                       </div>
                       <ul className="space-y-2">
                         {project.objectives.map((objective, index) => (
@@ -124,7 +126,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     <div>
                       <div className="flex items-center gap-3 mb-4">
                         <Wrench className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                        <h3 className="text-xl font-bold">Technologies Utilisées</h3>
+                        <h3 className="text-xl font-bold">{t('modal.technologies')}</h3>
                       </div>
                       <div className="flex flex-wrap gap-3">
                         {project.technologies.map((tech, index) => (
@@ -143,7 +145,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       <div>
                         <div className="flex items-center gap-3 mb-4">
                           <TrendingUp className="w-6 h-6 text-pink-600 dark:text-pink-400" />
-                          <h3 className="text-xl font-bold">Défis & Apprentissages</h3>
+                          <h3 className="text-xl font-bold">{t('modal.challenges')}</h3>
                         </div>
                         <ul className="space-y-2">
                           {project.challenges.map((challenge, index) => (
@@ -158,7 +160,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                     {/* Results */}
                     <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-2xl p-6">
-                      <h3 className="text-xl font-bold mb-3">Résultats</h3>
+                      <h3 className="text-xl font-bold mb-3">{t('modal.results')}</h3>
                       <ul className="space-y-2">
                         {project.results.map((result, index) => (
                           <li key={index} className="flex items-start gap-3">
@@ -180,7 +182,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-shadow"
                       >
                         <Github className="w-5 h-5" />
-                        Voir le code
+                        {t('modal.viewCode')}
                       </motion.a>
                       {project.demo !== '#' && (
                         <motion.a
@@ -193,10 +195,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         >
                           <ExternalLink className="w-5 h-5" />
                           {project.demo.includes('figma') 
-                            ? 'Voir sur Figma' 
+                            ? t('projects.figma')
                             : project.demo.includes('linkedin') 
-                            ? 'Voir sur LinkedIn' 
-                            : 'Voir la démo'}
+                            ? t('modal.viewLinkedIn')
+                            : t('modal.viewDemo')}
                         </motion.a>
                       )}
                     </div>

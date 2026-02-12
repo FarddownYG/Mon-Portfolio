@@ -6,6 +6,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -33,16 +34,18 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors ${darkMode ? 'dark' : ''}`}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className={`min-h-screen transition-colors ${darkMode ? 'dark' : ''}`}>
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
