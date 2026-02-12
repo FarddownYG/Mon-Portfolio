@@ -1,0 +1,2 @@
+import { translationsEN } from './en';
+export const translationsSV = { ...translationsEN, nav: { home: 'Hem', about: 'Om mig', projects: 'Projekt', skills: 'Färdigheter', contact: 'Kontakt', cv: 'CV' }, hero: { ...translationsEN.hero, greeting: 'Hej, jag är', subtitle: 'Ingenjörsstudent vid ESAIP • Frilansare', role1: 'Webbutvecklare', role2: 'UX/UI Designer', cta1: 'Se mina projekt', cta2: 'Kontakta mig' } };

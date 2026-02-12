@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, FileText, Languages } from 'lucide-react';
+import { Moon, Sun, Menu, X, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { LanguageSelector } from './LanguageSelector';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -11,7 +12,7 @@ interface NavbarProps {
 export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { language, toggleLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,15 +94,7 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
                 <FileText className="w-4 h-4" />
                 {t('nav.cv')}
               </motion.a>
-              <motion.button
-                onClick={toggleLanguage}
-                className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                title={language === 'en' ? 'Switch to French' : 'Passer en anglais'}
-              >
-                <Languages className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-              </motion.button>
+              <LanguageSelector />
               <motion.button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
@@ -119,15 +112,7 @@ export function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
 
             {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center space-x-2">
-              <motion.button
-                onClick={toggleLanguage}
-                className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                title={language === 'en' ? 'Switch to French' : 'Passer en anglais'}
-              >
-                <Languages className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-              </motion.button>
+              <LanguageSelector />
               <motion.button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"

@@ -1,0 +1,2 @@
+import { translationsEN } from './en';
+export const translationsNL = { ...translationsEN, nav: { home: 'Home', about: 'Over mij', projects: 'Projecten', skills: 'Vaardigheden', contact: 'Contact', cv: 'CV' }, hero: { ...translationsEN.hero, greeting: 'Hallo, ik ben', subtitle: 'Ingenieursstudent bij ESAIP • Freelancer', role1: 'Webontwikkelaar', role2: 'UX/UI Designer', cta1: 'Bekijk mijn projecten', cta2: 'Neem contact op' } };

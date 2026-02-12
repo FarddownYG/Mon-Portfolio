@@ -1,0 +1,2 @@
+import { translationsEN } from './en';
+export const translationsRO = { ...translationsEN, nav: { home: 'Acasă', about: 'Despre', projects: 'Proiecte', skills: 'Competențe', contact: 'Contact', cv: 'CV' }, hero: { ...translationsEN.hero, greeting: 'Salut, sunt', subtitle: 'Student Inginerie la ESAIP • Freelancer', role1: 'Dezvoltator Web', role2: 'Designer UX/UI', cta1: 'Vezi proiectele mele', cta2: 'Contactează-mă' } };

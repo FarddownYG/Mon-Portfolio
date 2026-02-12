@@ -1,0 +1,2 @@
+import { translationsEN } from './en';
+export const translationsRU = { ...translationsEN, nav: { home: 'Главная', about: 'Обо мне', projects: 'Проекты', skills: 'Навыки', contact: 'Контакт', cv: 'Резюме' }, hero: { ...translationsEN.hero, greeting: 'Привет, я', subtitle: 'Студент инженерного факультета ESAIP • Фрилансер', role1: 'Веб-разработчик', role2: 'UX/UI Дизайнер', cta1: 'Посмотреть проекты', cta2: 'Связаться' } };
