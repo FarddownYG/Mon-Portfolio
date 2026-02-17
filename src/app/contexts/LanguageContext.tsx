@@ -39,18 +39,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     
     // Fallback to English if translation not found
     if (!value && language !== 'en') {
-      value = translations.en;
+      let fallbackValue: any = translations.en;
       for (const k of keys) {
-        value = value?.[k];
+        fallbackValue = fallbackValue?.[k];
       }
+      if (fallbackValue) return fallbackValue;
     }
     
     // Fallback to French if still not found
     if (!value && language !== 'fr') {
-      value = translations.fr;
+      let fallbackValue: any = translations.fr;
       for (const k of keys) {
-        value = value?.[k];
+        fallbackValue = fallbackValue?.[k];
       }
+      if (fallbackValue) return fallbackValue;
     }
     
     return value || key;
